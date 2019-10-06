@@ -4,13 +4,34 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive --require ts-node/register \"test/*.ts\"",
+    "cover": "nyc npm t"
   },
+  "nyc": {
+    "include": [
+      "src/*.ts",
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html",
+      "text"
+    ],
+    "sourceMap":true,
+    "all": true
+  },  
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.11",
     "chai": "^4.2.0",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
