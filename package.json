@@ -1,5 +1,5 @@
 {
-  "name": "winstion-gke-formatter",
+  "name": "winston-gke-formatter",
   "version": "0.0.1",
   "description": "winston formmatter for gke(stackdriver logging)",
   "main": "src/index.ts",
