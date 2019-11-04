@@ -21,11 +21,11 @@ Add the formaters you need to winston config.
 Stackdriver Logging uses "serverity" filed instead "level".
 
 ```javascript
-const gke-formatter = require('winston-gke-formatter')
+const gke_formatter = require('winston-gke-formatter')
 
 const logger = winston.createLogger(
     format: winston.format.combine(
-            gke-formatter.severity(),
+            gke_formatter.severity(),
             winston.format.json()
     )
 )
@@ -44,13 +44,13 @@ Winston: https://github.com/winstonjs/winston#logging-levels
 
 Support Stackdriver Logging filed
 
-```
-const gke-formatter = require('winston-gke-formatter')
+```javascript
+const gke_formatter = require('winston-gke-formatter')
 
 const logger = winston.createLogger(
-    levels: gke-formatter.StackDriverLoggingConfig.levels,
+    levels: gke_formatter.StackDriverLoggingConfig.levels,
     format: winston.format.combine(
-            gke-formatter.severity(),
+            gke_formatter.severity(),
             winston.format.json()
     )
 )
@@ -61,13 +61,13 @@ logger.emergency('super fatal error')
 
 if use TypeScript. Have to set interface at generics. see https://github.com/winstonjs/winston/issues/1523
 
-```
-import * as gke-formatter from 'winston-gke-formatter'
+```javascript
+import * as gke_formatter from 'winston-gke-formatter'
 
-logger = <gke-formatter.StackDriverLoggingLeveledLogger>winston.createLogger({
-    levels: gke-formatter.StackDriverLoggingConfig.levels,
+logger = <gke_formatter.StackDriverLoggingLeveledLogger>winston.createLogger({
+    levels: gke_formatter.StackDriverLoggingConfig.levels,
     format: winston.format.combine(
-        gke-formatter.severity(),
+        gke_formatter.severity(),
         winston.format.json()
     ),
     transports: [
