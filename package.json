@@ -23,18 +23,20 @@
       "html",
       "text"
     ],
-    "sourceMap":true,
+    "sourceMap": true,
     "all": true
-  },  
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.7.11",
+    "@types/sinon": "^7.5.0",
     "chai": "^4.2.0",
     "mocha": "^6.2.1",
     "nyc": "^14.1.1",
+    "sinon": "^7.5.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
   },
