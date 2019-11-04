@@ -1,7 +1,7 @@
 {
-  "name": "winstion-for-gke",
+  "name": "winstion-gke-formatter",
   "version": "0.0.1",
-  "description": "",
+  "description": "winston formmatter for gke(stackdriver logging)",
   "main": "src/index.ts",
   "scripts": {
     "test": "mocha --recursive --require ts-node/register \"test/*.ts\"",
