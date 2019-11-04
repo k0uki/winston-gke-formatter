@@ -2,7 +2,7 @@
   "name": "winston-gke-formatter",
   "version": "0.0.1",
   "description": "winston formmatter for gke(stackdriver logging)",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
     "dist"
   ],
