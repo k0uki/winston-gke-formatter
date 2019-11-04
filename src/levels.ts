@@ -1,6 +1,6 @@
 import {Logger, LeveledLogMethod} from 'winston'
 
-export interface StackDriverLoggingLevelLogger extends Logger {
+export interface StackDriverLoggingLeveledLogger extends Logger {
     debug: LeveledLogMethod;
     info: LeveledLogMethod;
     notice: LeveledLogMethod;
@@ -11,7 +11,7 @@ export interface StackDriverLoggingLevelLogger extends Logger {
     emergency: LeveledLogMethod;
 }
 
-export const StackDriverLoggingLevels = {
+export const StackDriverLoggingConfig = {
 levels: {
     default: 8,    
     debug: 7,

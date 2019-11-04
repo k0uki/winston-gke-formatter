@@ -1,7 +1,11 @@
 import {format} from 'winston'
 
-export const severity = format((info, opt) => {
+interface SeverityOptions {
+    use_level?: boolean
+}
+
+export const severity = format((info, opt: SeverityOptions) => {
     info.severity = info.level
-    if(opt.delete_level) delete info.level;
+    if(!opt.use_level) delete info.level;
     return info;
 })

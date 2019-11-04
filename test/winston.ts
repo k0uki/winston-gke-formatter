@@ -1,27 +1,69 @@
 import * as assert from 'assert';
+import * as sinon from 'sinon';
 
-import * as levels from '../src/levels';
-import * as gkeformat from '../src/format';
+import * as gke from '../src/index'
 
 import * as winston from 'winston'
-import { format } from 'path';
 
 describe('Winston', ()=> {
-    it('is here', ()=> {
-        const logger: levels.StackDriverLoggingLevelLogger = <levels.StackDriverLoggingLevelLogger>winston.createLogger({
-            levels: levels.StackDriverLoggingLevels.levels,
+    const console_transport = new winston.transports.Console();
+    let spy: sinon.SinonSpy;
+    let logger: gke.StackDriverLoggingLeveledLogger;
+
+    beforeEach((done) => {
+        spy = sinon.spy(console_transport, 'log')
+        logger = <gke.StackDriverLoggingLeveledLogger>winston.createLogger({
+            levels: gke.StackDriverLoggingConfig.levels,
             format: winston.format.combine(
-                gkeformat.severity({delete_level:true}),
+                gke.severity(),
                 winston.format.json()
             ),
-            defaultMeta: { service: 'user-service' },
             transports: [
-              new winston.transports.Console()
+                console_transport
             ]
         });
-        winston.addColors(levels.StackDriverLoggingLevels.colors)
+        winston.addColors(gke.StackDriverLoggingConfig.colors)
+        done();
+    });
+
+    afterEach((done) => {
+        spy.restore();
+        done();
+    });
+
+    it('set serverity', ()=> {
         logger.info('hi')
-        logger.debug('debug!!')
-        logger.critical('critical!!!')
-    })
+
+        const loggedObject =spy.args[0][0]
+        assert(loggedObject.severity, 'info')
+        assert(loggedObject.message, 'hi')
+    });
+
+    it('can call stackdriver level', ()=> {
+        logger.emergency('super big error')
+
+        const loggedObject =spy.args[0][0]
+        assert(loggedObject.severity, 'emergency')
+        assert(loggedObject.message, 'super big error')   
+    });
+
+    it('can use level too', () => {
+        logger = <gke.StackDriverLoggingLeveledLogger>winston.createLogger({
+            levels: gke.StackDriverLoggingConfig.levels,
+            format: winston.format.combine(
+                gke.severity({use_level:true}),
+                winston.format.json()
+            ),
+            transports: [
+                console_transport
+            ]
+        });
+
+        logger.info('hi')
+
+        const loggedObject =spy.args[0][0]
+        assert(loggedObject.severity, 'info')
+        assert(loggedObject.level, 'info')
+        assert(loggedObject.message, 'hi')
+    });
 });
