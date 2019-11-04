@@ -2,8 +2,13 @@
   "name": "winston-gke-formatter",
   "version": "0.0.1",
   "description": "winston formmatter for gke(stackdriver logging)",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
     "test": "mocha --recursive --require ts-node/register \"test/*.ts\"",
     "cover": "nyc npm t"
   },
