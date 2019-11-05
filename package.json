@@ -2,6 +2,10 @@
   "name": "winston-gke-formatter",
   "version": "0.0.1",
   "description": "winston formmatter for gke(stackdriver logging)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k0uki/winston-gke-formatter.git"
+  },
   "main": "dist/src/index.js",
   "files": [
     "dist"
@@ -31,7 +35,7 @@
     "sourceMap": true,
     "all": true
   },
-  "author": "k0uki",
+  "author": "k0uki <k0uki221@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.3",
