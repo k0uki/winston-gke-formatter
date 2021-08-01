@@ -23,12 +23,12 @@ Stackdriver Logging uses "serverity" filed instead "level".
 ```javascript
 const gke_formatter = require('winston-gke-formatter')
 
-const logger = winston.createLogger(
+const logger = winston.createLogger({
     format: winston.format.combine(
             gke_formatter.severity(),
             winston.format.json()
     )
-)
+})
 
 logger.info('hi')
 > {"message":"hi","severity":"info"}
@@ -47,13 +47,13 @@ Support Stackdriver Logging filed
 ```javascript
 const gke_formatter = require('winston-gke-formatter')
 
-const logger = winston.createLogger(
+const logger = winston.createLogger({
     levels: gke_formatter.StackDriverLoggingConfig.levels,
     format: winston.format.combine(
             gke_formatter.severity(),
             winston.format.json()
     )
-)
+})
 
 logger.emergency('super fatal error')
 > {"message":"super fatal error","severity":"emergency"}
